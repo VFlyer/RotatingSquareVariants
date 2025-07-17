@@ -19,8 +19,8 @@ MonoBehaviour:
     pack: Cruel Rotating Squares, Cruel Flashing Rotating Squares, Faulty Cruel Flashing
     Rotating Squares.\n\nModule IDs:\nCruel Rotating Squares: cruelRotatingSquares\nCruel
     Flashing Rotating Squares: cruelFlashRotateSquares\nFaulty Cruel Flashing Rotating
-    Squares: faultCruelFlashRotateSquares\n\nImplemented by VFlyer\nModule Ideas by
-    Kusane\n\nTP Supported! \n"
+    Squares: faultCruelFlashRotateSquares\n\nImplemented by VFlyer\nOriginal Rotating
+    Squares Model by TasThiluna\nModule Ideas by Kusane\n\nTP Supported! \n"
   version: 1.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: c343e8707e6f2f941bddc023508b8c46, type: 3}
