@@ -85,7 +85,7 @@ public class RotatingSquaresSpinoffCore : MonoBehaviour {
 
 		var endingRotation = lastRotation * Quaternion.Euler(pickedVector);
 		var speed = new[] { 60f, 120f, 180f, 240f, 300f, 360f }.PickRandom();
-        for (float t = 0; t < 1f; t += Time.deltaTime * speed / degrees)
+        for (float t = 0; t < 1f; t += Time.deltaTime * speed / Mathf.Abs(degrees))
         {
 			var curProg = Easing.InOutSine(t, 0, 1, 1);
 			var requiredRotation = Quaternion.Euler(pickedVector * curProg);

@@ -258,7 +258,7 @@ public class FaultyCruelFlashingRotatingSquaresScript : RotatingSquaresSpinoffCo
 
         var endingRotation = lastRotation * Quaternion.Euler(pickedVector);
         var speed = new[] { 60, 120, 180, 240, 300, 360 }.PickRandom();
-        for (float t = 0; t < 1f; t += Time.deltaTime * speed / degrees)
+        for (float t = 0; t < 1f; t += Time.deltaTime * speed / Mathf.Abs(degrees))
         {
             var curProg = Easing.InOutSine(t, 0, 1, 1);
             var requiredRotation = Quaternion.Euler(pickedVector * curProg);
