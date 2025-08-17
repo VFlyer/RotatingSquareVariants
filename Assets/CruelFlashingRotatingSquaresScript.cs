@@ -152,7 +152,7 @@ public class CruelFlashingRotatingSquaresScript : RotatingSquaresSpinoffCore {
                 if (relevantMaterial.HasProperty("_UnlitColor"))
                     relevantMaterial.SetColor("_UnlitColor", Color.white);
             }
-            for (float t = 0; t < 1f && !needyActive; t += Time.deltaTime * speed)
+            for (float t = 0; t < 1f && !needyActive; t += Time.deltaTime * moduleSpeed)
             {
                 var curProg = Easing.InOutSine(t, 0, 1, 0.5f);
                 for (var x = 0; x < btnRenderers.Length; x++)
@@ -186,7 +186,7 @@ public class CruelFlashingRotatingSquaresScript : RotatingSquaresSpinoffCore {
                 if (relevantMaterial.HasProperty("_UnlitColor"))
                     relevantMaterial.SetColor("_UnlitColor", activeColors[colorIdx]);
             }
-            for (float t = 0; t < 1f && needyActive; t += Time.deltaTime * speed)
+            for (float t = 0; t < 1f && needyActive; t += Time.deltaTime * moduleSpeed)
             {
                 var curProg = Easing.InOutSine(t, 0, 1, 0.5f);
                 for (var x = 0; x < btnRenderers.Length; x++)
@@ -211,8 +211,8 @@ public class CruelFlashingRotatingSquaresScript : RotatingSquaresSpinoffCore {
         var pickedVector = Vector3.up * degrees;
 
         var endingRotation = lastRotation * Quaternion.Euler(pickedVector);
-        var speed = new[] { .25f, .4f, 0.5f, .2f, 1f }.PickRandom();
-        for (float t = 0; t < 1f; t += Time.deltaTime * speed)
+        var speed = new[] { 60, 120, 180, 240, 300, 360 }.PickRandom();
+        for (float t = 0; t < 1f; t += Time.deltaTime * speed / degrees)
         {
             var curProg = Easing.InOutSine(t, 0, 1, 1);
             var requiredRotation = Quaternion.Euler(pickedVector * curProg);
@@ -232,7 +232,7 @@ public class CruelFlashingRotatingSquaresScript : RotatingSquaresSpinoffCore {
                 if (btnRenderers[x].material.HasProperty("_Blend"))
                 {
                     var curBlend = btnRenderers[x].material.GetFloat("_Blend");
-                    var curModifier = Time.deltaTime * speed;
+                    var curModifier = Time.deltaTime * moduleSpeed;
                     btnRenderers[x].material.SetFloat("_Blend", Mathf.Clamp(curBlend - curModifier, 0, 1));
                 }
             }

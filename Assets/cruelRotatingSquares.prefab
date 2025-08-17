@@ -7169,7 +7169,7 @@ MonoBehaviour:
   - {fileID: 23874496228964770}
   - {fileID: 23627648878000204}
   - {fileID: 23625436948529888}
-  speed: 1
+  moduleSpeed: 2
   btnRenderers:
   - {fileID: 23082920946679944}
   - {fileID: 23956380424351400}

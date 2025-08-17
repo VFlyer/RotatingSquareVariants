@@ -6973,7 +6973,7 @@ MonoBehaviour:
   - {fileID: 23818877827781456}
   - {fileID: 23839005900303320}
   - {fileID: 23801899014328070}
-  speed: 1
+  moduleSpeed: 2
   btnRenderers:
   - {fileID: 23374206517591890}
   - {fileID: 23286787205661164}

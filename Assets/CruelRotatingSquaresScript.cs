@@ -201,7 +201,7 @@ public class CruelRotatingSquaresScript : RotatingSquaresSpinoffCore {
         for (var x = 0; x < cbBtnTextsDiffuse.Length; x++)
             if (lastIdxColors[x] != newIdxColors[x])
                 cbBtnTextsDiffuse[x].text = "";
-        for (float t = 0; t < 1f; t += Time.deltaTime * speed)
+        for (float t = 0; t < 1f; t += Time.deltaTime * moduleSpeed)
         {
             for (var x = 0; x < btnRenderers.Length; x++)
             {
@@ -237,8 +237,8 @@ public class CruelRotatingSquaresScript : RotatingSquaresSpinoffCore {
         for (var x = 0; x < cbBtnTexts.Length; x++)
             cbBtnTexts[x].transform.localRotation *= Quaternion.Euler(Vector3.forward * degrees);
         var endingRotationPlate = lastRotationPlate * Quaternion.Euler(pickedVector);
-        var speed = new[] { .25f, .4f, 0.5f, .2f, 1f }.PickRandom();
-        for (float t = 0; t < 1f; t += Time.deltaTime * speed)
+        var speed = new[] { 60, 120, 180, 240, 300, 360 }.PickRandom();
+        for (float t = 0; t < 1f; t += Time.deltaTime * speed / degrees)
         {
             var curProg = Easing.InOutSine(t, 0, 1, 1);
             var requiredRotation = Quaternion.Euler(pickedVector * curProg);
@@ -259,7 +259,7 @@ public class CruelRotatingSquaresScript : RotatingSquaresSpinoffCore {
             if (btnRenderers[x].material.HasProperty("_Blend"))
             {
                 var curBlend = btnRenderers[x].material.GetFloat("_Blend");
-                var curModifier = (needyActive && idxToLight.Contains(x) ? 1 : -1) * Time.deltaTime * speed;
+                var curModifier = (needyActive && idxToLight.Contains(x) ? 1 : -1) * Time.deltaTime * moduleSpeed;
                 btnRenderers[x].material.SetFloat("_Blend", Mathf.Clamp(curBlend + curModifier, 0, 1));
             }
         }

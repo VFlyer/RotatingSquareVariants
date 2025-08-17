@@ -2710,6 +2710,8 @@ MonoBehaviour:
   - {fileID: 114450252524772490}
   - {fileID: 114058474507871888}
   plateTransform: {fileID: 4834049405779350}
+  TPArrowRenders: []
+  moduleSpeed: 1
 --- !u!114 &114030429803866876
 MonoBehaviour:
   m_ObjectHideFlags: 1

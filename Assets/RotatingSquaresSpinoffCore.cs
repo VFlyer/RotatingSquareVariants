@@ -15,7 +15,7 @@ public class RotatingSquaresSpinoffCore : MonoBehaviour {
 	protected bool needyActive, TwitchPlaysActive;
 	protected int moduleID;
 	[SerializeField, Range(1f, 10f)]
-	protected float speed = 5f;
+	protected float moduleSpeed = 5f;
 	protected virtual void QuickLogDebug(string toLog = "", params object[] args)
 	{
 		Debug.LogFormat("<{0} #{1}> {2}", needyHandler.ModuleDisplayName, moduleID, string.Format(toLog, args));
@@ -84,8 +84,8 @@ public class RotatingSquaresSpinoffCore : MonoBehaviour {
 		var pickedVector = (Random.value < 0.5f ? Vector3.up : Vector3.down) * degrees;
 
 		var endingRotation = lastRotation * Quaternion.Euler(pickedVector);
-		var speed = new[] { .25f, .4f, 0.5f, .2f, 1f }.PickRandom();
-        for (float t = 0; t < 1f; t += Time.deltaTime * speed)
+		var speed = new[] { 60f, 120f, 180f, 240f, 300f, 360f }.PickRandom();
+        for (float t = 0; t < 1f; t += Time.deltaTime * speed / degrees)
         {
 			var curProg = Easing.InOutSine(t, 0, 1, 1);
 			var requiredRotation = Quaternion.Euler(pickedVector * curProg);
@@ -105,7 +105,8 @@ public class RotatingSquaresSpinoffCore : MonoBehaviour {
     {
 		for (var x = 0; x < TPArrowRenders.Length; x++)
 			TPArrowRenders.ElementAtOrDefault(x).enabled = false;
-		TPArrowRenders.ElementAtOrDefault(DetectTPIdxFromPlate()).enabled = true;
+		if (TPArrowRenders != null && TPArrowRenders.Length == 4)
+			TPArrowRenders.ElementAtOrDefault(DetectTPIdxFromPlate()).enabled = true;
 	}
 	protected int DetectTPIdxFromPlate()
     {
